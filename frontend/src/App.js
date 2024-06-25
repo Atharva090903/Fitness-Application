@@ -1,15 +1,16 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { useAuthContext } from './hooks/useAuthContext'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useAuthContext } from './hooks/useAuthContext';
 
 // pages & components
-import Home from './pages/Home'
-import Login from './pages/Login'
-import Signup from './pages/Signup'
-import Navbar from './components/Navbar'
-import AboutUs from './pages/AboutUs'
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Navbar from './components/Navbar';
+import BMI from './pages/BMI';
+import LandingPage from './pages/LandingPage'; // Import the landing page component
 
 function App() {
-  const { user } = useAuthContext()
+  const { user } = useAuthContext();
 
   return (
     <div className="App">
@@ -17,20 +18,20 @@ function App() {
         <Navbar />
         <div className="pages">
           <Routes>
-            <Route 
-              path="/" 
-              element={user ? <Home /> : <Navigate to="/login" />} 
-            />
-            <Route 
-              path="/login" 
-              element={!user ? <Login /> : <Navigate to="/" />} 
-            />
-            <Route 
-              path="/signup" 
-              element={!user ? <Signup /> : <Navigate to="/" />} 
-            />
-            <Route path="/about-us" element={<AboutUs />} />
+            {/* Landing Page Route */}
+            <Route path="/" element={<LandingPage />} />
 
+            {/* Home Page Route */}
+            <Route path="/home" element={user ? <Home /> : <Navigate to="/login" />} />
+
+            {/* Login Page Route */}
+            <Route path="/login" element={!user ? <Login /> : <Navigate to="/home" />} />
+
+            {/* Signup Page Route */}
+            <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/home" />} />
+
+            {/* BMI Calculator Route */}
+            <Route path="/BMI" element={user ? <BMI/> : <Navigate to="/login" />} />
           </Routes>
         </div>
       </BrowserRouter>
