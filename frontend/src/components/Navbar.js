@@ -22,6 +22,7 @@ const Navbar = () => {
             <div>
               <Link to="/">Home</Link>
               <Link to="/BMI">BMI</Link>
+              <Link to="/chatbot">Chatbot</Link>
               
               <button onClick={handleClick}>Log out</button>
             </div>

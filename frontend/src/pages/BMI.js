@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/BMI.css'; // Import CSS for BMI styles
 
 const BMI = () => {
   const [height, setHeight] = useState('');
@@ -30,34 +31,38 @@ const BMI = () => {
 
   return (
     <div className="bmi-page">
-      <h2>BMI Calculator</h2>
-      <form onSubmit={calculateBMI}>
-        <div>
-          <label>
+      <h2 className="bmi-header">BMI Calculator</h2>
+      <form onSubmit={calculateBMI} className="bmi-form">
+        <div className="input-group">
+          <label className="input-label">
             Height (cm):
             <input
               type="number"
               value={height}
               onChange={(e) => setHeight(e.target.value)}
+              className="input-field"
+              placeholder="Enter height in cm"
             />
           </label>
         </div>
-        <div>
-          <label>
+        <div className="input-group">
+          <label className="input-label">
             Weight (kg):
             <input
               type="number"
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
+              className="input-field"
+              placeholder="Enter weight in kg"
             />
           </label>
         </div>
-        <button type="submit">Calculate BMI</button>
+        <button type="submit" className="calculate-btn">Calculate BMI</button>
       </form>
       {bmi && (
-        <div>
-          <h2>Your BMI: {bmi}</h2>
-          <h3>Category: {category}</h3>
+        <div className="result-container">
+          <h2 className="result-header">Your BMI: {bmi}</h2>
+          <h3 className="result-category">Category: {category}</h3>
         </div>
       )}
     </div>

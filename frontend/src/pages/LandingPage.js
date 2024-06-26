@@ -15,8 +15,8 @@ const LandingPage = () => {
           <Link to="/signup">
             <button className="btn">Sign Up</button>
           </Link>
-          <Link to="/BMI">
-            <button className="btn">BMI Calculator</button>
+          <Link to="/chatbot">
+            <button className="btn">help</button>
           </Link>
         </div>
       </div>
